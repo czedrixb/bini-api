@@ -7,7 +7,7 @@ const albumSchema = mongoose.Schema(
             required: [true, "Please enter a album name"],
         },
         year_released: {
-            type: Year,
+            type: Number,
             required: [true, "Please enter year released"],
         },
     },

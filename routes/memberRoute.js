@@ -2,10 +2,13 @@ const express = require("express")
 const router = express.Router()
 const memberController = require('../controllers/memberController')
 
-router.get('/', memberController.getMembers)
-router.get('/:id', memberController.getMember)
-router.post('/', memberController.createMember)
-router.put('/:id', memberController.updateMember)
-router.delete('/:id', memberController.deleteMember)
+router.route('/')
+    .get(memberController.getMembers)
+    .post(memberController.createMember)
+
+router.route('/:id')
+    .get(memberController.getMember)
+    .put(memberController.updateMember)
+    .delete(memberController.deleteMember)
 
 module.exports = router
