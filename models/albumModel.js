@@ -5,6 +5,7 @@ const albumSchema = mongoose.Schema(
         name: {
             type: String,
             required: [true, "Please enter a album name"],
+            unique: true
         },
         year_released: {
             type: Number,

@@ -5,6 +5,7 @@ const songSchema = mongoose.Schema(
         title: {
             type: String,
             required: [true, "Please enter a song name"],
+            unique: true
         },
         duration: {
             type: String,

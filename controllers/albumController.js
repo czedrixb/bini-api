@@ -39,14 +39,13 @@ const createAlbum = asyncHandler(async (req, res) => {
 const updateAlbum = asyncHandler(async (req, res) => {
     try {
         const { id } = req.params
-        const album = await Album.findByIdAndUpdate(id, req.body)
+        const updatedAlbum = await Album.findByIdAndUpdate(id, req.body, { new: true });
 
-        if (!album) {
+        if (!updatedAlbum) {
             res.status(404)
             throw new Error(`cannot find album with ID ${id}`)
         }
 
-        const updatedAlbum = await Album.findById(id)
         res.status(200).json(updatedAlbum)
     } catch (error) {
         res.status(500)

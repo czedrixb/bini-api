@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const memberRoute = require("./routes/memberRoute");
 const albumRoute = require("./routes/albumRoute");
+const songRoute = require("./routes/songRoute");
 const cors = require('cors');
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/members', memberRoute);
 app.use('/api/albums', albumRoute);
+app.use('/api/songs', songRoute);
 
 app.get("/", (req, res) => {
     res.send("Hello Bini API! :3");

@@ -5,6 +5,7 @@ const memberSchema = mongoose.Schema(
         name: {
             type: String,
             required: [true, "Please enter a member name"],
+            unique: true
         },
         full_name: {
             type: String,
