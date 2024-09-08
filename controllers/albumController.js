@@ -1,11 +1,19 @@
 const Album = require("../models/albumModel")
+const Song = require("../models/songModel")
 const asyncHandler = require('express-async-handler')
 
 // get
 const getAlbums = asyncHandler(async (req, res) => {
     try {
-        const album = await Album.find({})
-        res.status(200).json(album)
+        const albums = await Album.find({})
+
+        const albumsWithSongs = await Promise.all(albums.map(async (album) => ({
+            ...album.toObject(),
+            songs: await Song.find({ album: album._id }, 'title duration')
+        })));
+
+
+        res.status(200).json(albumsWithSongs)
     } catch (error) {
         res.status(500)
         throw new Error(error.message)

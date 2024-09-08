@@ -6,8 +6,8 @@ const asyncHandler = require('express-async-handler')
 // get
 const getSongs = asyncHandler(async (req, res) => {
     try {
-        const song = await Song.find({})
-        res.status(200).json(song)
+        const songs = await Song.find({}).populate('album', 'name')
+        res.status(200).json(songs)
     } catch (error) {
         res.status(500)
         throw new Error(error.message)
@@ -18,7 +18,7 @@ const getSongs = asyncHandler(async (req, res) => {
 const getSong = asyncHandler(async (req, res) => {
     try {
         const { id } = req.params
-        const song = await Song.findById(id)
+        const song = await Song.findById(id).populate('album', 'name')
         res.status(200).json(song)
     } catch (error) {
         res.status(500)
