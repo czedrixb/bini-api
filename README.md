@@ -1,16 +1,63 @@
+
 # Bini API
 
-This is an API for BINI, a Filipino girl group, showcasing their members' profiles, along with album details and songs categorized by album. Built with Node.js and MongoDB, it provides easy access to information about the group's members and discography.
+This is an API for BINI, a Filipino girl group, providing detailed profiles of its members, album information, and songs categorized by album. All data is referenced from their Wikipedia page: BINI (group). Built with Node.js and MongoDB, the API offers structured access to the group's information.
 
 
-## Features
+## API Reference
 
-- List of all memebrs
-- List of all albums
-- List of all songs
+#### Get all members
+
+```http
+  GET /api/members
+```
+
+#### Get single member
+
+```http
+  GET /api/members/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Required**. Enter member name to fetch |
+
+
+#### Get all albums
+
+```http
+  GET /api/albums
+```
+
+#### Get single album
+
+```http
+  GET /api/albums/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Required**. Enter album name to fetch |
+
+
+#### Get all songs
+
+```http
+  GET /api/songs
+```
+
+#### Get single song
+
+```http
+  GET /api/songs/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title`      | `string` | **Required**. Enter song title to fetch |
 
 
 ## Authors
 
-- [@czedrixb](https://www.github.com/czedrixb)
+- [@czedrixb](https://github.com/czedrixb)
 
