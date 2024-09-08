@@ -6,8 +6,10 @@ router.route('/')
     .get(memberController.getMembers)
     .post(memberController.createMember)
 
-router.route('/:id')
+router.route('/:name')
     .get(memberController.getMember)
+
+router.route('/:id')
     .put(memberController.updateMember)
     .delete(memberController.deleteMember)
 

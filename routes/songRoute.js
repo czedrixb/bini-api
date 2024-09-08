@@ -6,8 +6,10 @@ router.route('/')
     .get(songController.getSongs)
     .post(songController.createSong);
 
-router.route('/:id')
+router.route('/:title')
     .get(songController.getSong)
+
+router.route('/:id')
     .put(songController.updateSong)
     .delete(songController.deleteSong);
 

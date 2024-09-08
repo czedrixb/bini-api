@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Song = require("../models/songModel")
 const Album = require('../models/albumModel')
 const asyncHandler = require('express-async-handler')
@@ -17,14 +16,24 @@ const getSongs = asyncHandler(async (req, res) => {
 // show
 const getSong = asyncHandler(async (req, res) => {
     try {
-        const { id } = req.params
-        const song = await Song.findById(id).populate('album', 'name')
+        const { title } = req.params;
+
+        const song = await Song.findOne({ title })
+            .populate({
+                path: 'album',
+                select: 'name year_released'
+            });
+
+        if (!song) {
+            return res.status(404).json({ error: 'Song not found' });
+        }
+
         res.status(200).json(song)
     } catch (error) {
-        res.status(500)
-        throw new Error(error.message)
+        res.status(500).json({ error: error.message });
     }
-})
+});
+
 
 // create
 const createSong = asyncHandler(async (req, res) => {

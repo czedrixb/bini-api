@@ -6,8 +6,10 @@ router.route('/')
     .get(albumController.getAlbums)
     .post(albumController.createAlbum);
 
-router.route('/:id')
+router.route('/:name')
     .get(albumController.getAlbum)
+
+router.route('/:id')
     .put(albumController.updateAlbum)
     .delete(albumController.deleteAlbum);
 

@@ -23,9 +23,20 @@ const getAlbums = asyncHandler(async (req, res) => {
 // show
 const getAlbum = asyncHandler(async (req, res) => {
     try {
-        const { id } = req.params
-        const album = await Album.findById(id)
-        res.status(200).json(album)
+        const { name } = req.params;
+        const album = await Album.findOne({ name });
+
+        if (!album) {
+            return res.status(404).json({ error: 'Album not found' });
+        }
+
+        const songs = await Song.find({ album: album._id }, 'title duration');
+        const albumWithSongs = {
+            ...album.toObject(),
+            songs
+        };
+
+        res.status(200).json(albumWithSongs)
     } catch (error) {
         res.status(500)
         throw new Error(error.message)

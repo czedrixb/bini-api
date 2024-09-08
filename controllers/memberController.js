@@ -15,8 +15,8 @@ const getMembers = asyncHandler(async (req, res) => {
 // show
 const getMember = asyncHandler(async (req, res) => {
     try {
-        const { id } = req.params
-        const member = await Member.findById(id)
+        const { name } = req.params
+        const member = await Member.findOne({ name })
         res.status(200).json(member)
     } catch (error) {
         res.status(500)
