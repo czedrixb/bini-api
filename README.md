@@ -15,7 +15,7 @@ This is an API for BINI, a Filipino girl group, providing detailed profiles of i
 #### Get single member
 
 ```http
-  GET /api/members/${id}
+  GET /api/members/${title}
 ```
 
 | Parameter | Type     | Description                       |
@@ -32,7 +32,7 @@ This is an API for BINI, a Filipino girl group, providing detailed profiles of i
 #### Get single album
 
 ```http
-  GET /api/albums/${id}
+  GET /api/albums/${title}
 ```
 
 | Parameter | Type     | Description                       |
@@ -49,7 +49,7 @@ This is an API for BINI, a Filipino girl group, providing detailed profiles of i
 #### Get single song
 
 ```http
-  GET /api/songs/${id}
+  GET /api/songs/${title}
 ```
 
 | Parameter | Type     | Description                       |
